@@ -335,17 +335,20 @@ void main() {
 
   //Tasks
   group('Tasks', () {
+    final container = ProviderContainer();
+    tearDownAll(() {
+      container.dispose();
+    });
     test('initial list is empty', () {
-      final container = ProviderContainer();
-      addTearDown(container.dispose);
+      //addTearDown(container.dispose);
 
       final taskNotifier = container.read(taskProvider);
       expect(taskNotifier, []);
     });
-    test('fetch list is fine, i have records in my db already', () async {
+    test('fetch list is fine, i have task records in my db already', () async {
       WidgetsFlutterBinding.ensureInitialized();
-      final container = ProviderContainer();
-      addTearDown(container.dispose);
+      // final container = ProviderContainer();
+      // addTearDown(container.dispose);
       final taskNotifier = container.read(taskProvider.notifier);
       await taskNotifier.syncTasks();
       var taskState = container.read(taskProvider);
@@ -354,11 +357,13 @@ void main() {
     });
     test('insert task is fine', () async {
       WidgetsFlutterBinding.ensureInitialized();
-      final container = ProviderContainer();
-      addTearDown(container.dispose);
+      // final container = ProviderContainer();
+      //addTearDown(container.dispose);
       final taskNotifier = container.read(taskProvider.notifier);
       var task = Task(
-          title: "Test122", description: "description122", isComplete: false);
+          title: "Submit this assignment",
+          description: "I want to submit this task today",
+          isComplete: false);
       await taskNotifier.addTask(task);
       // container.refresh(taskProvider);
       var taskState = container.read(taskProvider);

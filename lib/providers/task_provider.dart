@@ -21,6 +21,7 @@ class TaskNotifier extends StateNotifier<List<Task>> {
     try {
       state = await _apiRepository.getTasks();
     } catch (e) {
+      if (!mounted) return;
       state = await _taskDatabaseService.getTasks();
     }
   }
