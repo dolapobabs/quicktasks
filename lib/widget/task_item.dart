@@ -213,6 +213,18 @@ class _TaskItemState extends ConsumerState<TaskItem> {
                                   ref
                                       .read(taskProvider.notifier)
                                       .toggleComplete(widget.task);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: const Text('Task set to Complete'),
+                                    duration: const Duration(seconds: 2),
+                                    elevation: 0,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.9,
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10))),
+                                    behavior: SnackBarBehavior.floating,
+                                  ));
                                 }
                               },
                             ),

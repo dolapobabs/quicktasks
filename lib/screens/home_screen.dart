@@ -58,8 +58,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             pinned: true,
             floating: false,
             automaticallyImplyLeading: false,
-            expandedHeight: 120.h,
-            toolbarHeight: 100.h,
+            // expandedHeight: 120.h,
+            toolbarHeight: 200.h,
 
             title: Text('Tasks \nOverview',
                     style: Theme.of(context)
@@ -106,6 +106,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,

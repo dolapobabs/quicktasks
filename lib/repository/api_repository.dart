@@ -22,12 +22,17 @@ class APIServiceRepositoryImpl implements APIRepository {
       if (result != null) {
         List<Task> tasks = [];
 
-        // Iterate over the map's values
-        result.forEach((key, value) {
-          if (value != null) {
-            tasks.add(Task.fromJson(value));
+        // // Iterate over the map's values
+        // result.forEach((key, value) {
+        //   if (value != null) {
+        //     tasks.add(Task.fromJson(value));
+        //   }
+        // });
+        for (var task in result) {
+          if (task != null) {
+            tasks.add(Task.fromJson(task));
           }
-        });
+        }
 
         return tasks;
       }
